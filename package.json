@@ -1,0 +1,18 @@
+{
+  "name": "solidity-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:charlesjhongc/solidity-example.git",
+  "author": "Charles Jhong <charlesjhongc@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.3.0",
+    "ethers": "^5.2.0",
+    "hardhat": "^2.3.0",
+    "prettier": "^2.3.0",
+    "prettier-plugin-solidity": "^1.0.0-beta.10"
+  }
+}
