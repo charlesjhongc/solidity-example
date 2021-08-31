@@ -5,17 +5,44 @@
   "repository": "git@github.com:charlesjhongc/solidity-example.git",
   "author": "Charles Jhong <charlesjhongc@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "setup": "yarn install --frozen-lockfile && yarn allow-scripts",
+    "node": "npx hardhat node",
+    "compile": "npx hardhat compile --show-stack-traces --force",
+    "compile-ts": "npx tsc --noEmit",
+    "check-pretty": "npx prettier --check .",
+    "lint": "solhint \"contracts/**/*.sol\"",
+    "test": "npx hardhat --network hardhat test",
+    "debug": "npx hardhat run scripts/debug/debugTokenlonTx.ts --network mainnet --no-compile"
+  },
   "devDependencies": {
+    "@lavamoat/allow-scripts": "^1.0.6",
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.7.8",
     "chai": "^4.3.4",
     "ethereum-waffle": "^3.3.0",
     "ethers": "^5.2.0",
     "hardhat": "^2.3.0",
     "prettier": "^2.3.0",
-    "prettier-plugin-solidity": "^1.0.0-beta.10",
-    "ts-node": "^10.0.0",
+    "prettier-plugin-solidity": "^1.0.0-beta.17",
+    "ts-node": "^10.2.1",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^4.3.4"
+    "typescript": "^4.4.2"
+  },
+  "lavamoat": {
+    "allowScripts": {
+      "keccak": false,
+      "secp256k1": false,
+      "web3": false,
+      "bufferutil": false,
+      "utf-8-validate": false,
+      "core-js-pure": false,
+      "core-js": false,
+      "postinstall-postinstall": false,
+      "@lavamoat/preinstall-always-fail": false
+    }
   }
 }
