@@ -5,15 +5,19 @@
   "repository": "git@github.com:charlesjhongc/solidity-example.git",
   "author": "Charles Jhong <charlesjhongc@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0 <16",
+    "yarn": "^1.22.10"
+  },
   "scripts": {
     "setup": "yarn install --frozen-lockfile && yarn allow-scripts",
-    "node": "npx hardhat node",
-    "compile": "npx hardhat compile --show-stack-traces --force",
-    "compile-ts": "npx tsc --noEmit",
-    "check-pretty": "npx prettier --check .",
-    "lint": "solhint \"contracts/**/*.sol\"",
-    "test": "npx hardhat --network hardhat test",
-    "debug": "npx hardhat run scripts/debug/debugTokenlonTx.ts --network mainnet --no-compile"
+    "node": "hardhat node",
+    "compile-sol": "hardhat compile --show-stack-traces --force",
+    "compile-ts": "tsc --noEmit",
+    "check-pretty": "prettier --check .",
+    "lint-es": "eslint --ignore-path .prettierignore \"./**/*.ts\"",
+    "lint-sol": "solhint \"contracts/**/*.sol\"",
+    "test": "hardhat --network hardhat test"
   },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^1.0.6",
@@ -22,12 +26,20 @@
     "@types/chai": "^4.2.21",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.7.8",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
     "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-mocha-no-only": "^1.1.1",
     "ethereum-waffle": "^3.3.0",
     "ethers": "^5.2.0",
     "hardhat": "^2.3.0",
     "prettier": "^2.3.0",
     "prettier-plugin-solidity": "^1.0.0-beta.17",
+    "solhint": "^3.3.6",
+    "solhint-plugin-prettier": "^0.0.5",
     "ts-node": "^10.2.1",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.4.2"
