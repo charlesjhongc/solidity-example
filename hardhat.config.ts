@@ -1,3 +1,4 @@
+import "dotenv/config"
 import "@nomiclabs/hardhat-waffle"
 
 // This adds support for typescript paths mappings
@@ -7,6 +8,7 @@ const accounts = {
     mnemonic: process.env.MNEMONIC || "test test test test test test test test test test test junk",
 }
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
+const ALCHEMY_TOKEN = process.env.ALCHEMY_TOKEN || ""
 
 module.exports = {
     networks: {
@@ -14,7 +16,7 @@ module.exports = {
             chainId: 1,
             accounts,
             forking: {
-                url: "",
+                url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_TOKEN}`,
                 blockNumber: 12650600,
             },
         },
@@ -35,16 +37,7 @@ module.exports = {
     solidity: {
         compilers: [
             {
-                version: "0.7.4",
-                settings: {
-                    optimizer: {
-                        enabled: true,
-                        runs: 1000,
-                    },
-                },
-            },
-            {
-                version: "0.6.12",
+                version: "0.7.6",
                 settings: {
                     optimizer: {
                         enabled: true,

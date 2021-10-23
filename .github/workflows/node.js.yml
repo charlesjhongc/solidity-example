@@ -23,7 +23,11 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Format
         run: yarn run check-pretty
+      - name: Lint
+        run: |
+          yarn run lint-sol
+          yarn run lint-es
       - name: Compile
         run: |
-          yarn run compile
+          yarn run compile-sol
           yarn run compile-ts
