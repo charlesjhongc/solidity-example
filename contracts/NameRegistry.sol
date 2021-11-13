@@ -2,7 +2,6 @@
 // FIXME license
 
 pragma solidity 0.8.10;
-pragma abicoder v2;
 
 import "@openzeppelin/contracts/utils/Address.sol";
 import "./Version.sol";
@@ -14,7 +13,7 @@ contract NameRegistry is INameRegistry, Version {
 
     mapping(address => string) private nameMap;
     uint256 private recordCount;
-    Responder callTarget;
+    Responder private callTarget;
 
     constructor() Version("v1.0.0") {
         recordCount = 0;
