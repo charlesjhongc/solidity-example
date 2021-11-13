@@ -1,22 +1,36 @@
 //SPDX-License-Identifier: Unlicense
-pragma solidity 0.7.6;
+// FIXME license
 
-import "hardhat/console.sol";
+pragma solidity 0.8.10;
+pragma abicoder v2;
 
-contract Greeter {
-    string private greeting;
+import "@openzeppelin/contracts/utils/Address.sol";
+import "./Version.sol";
+import "./Responder.sol";
+import "./interfaces/INameRegistry.sol";
 
-    constructor(string memory _greeting) {
-        console.log("Deploying a Greeter with greeting:", _greeting);
-        greeting = _greeting;
+contract NameRegistry is INameRegistry, Version {
+    using Address for address;
+
+    mapping(address => string) private nameMap;
+    uint256 private recordCount;
+    Responder callTarget;
+
+    constructor() Version("v1.0.0") {
+        recordCount = 0;
     }
 
-    function greet() public view returns (string memory) {
-        return greeting;
+    receive() external payable {}
+
+    fallback() external payable {}
+
+    function register(string calldata _name) external payable override {
+        nameMap[msg.sender] = _name;
+        recordCount += 1;
     }
 
-    function setGreeting(string memory _greeting) public {
-        console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
-        greeting = _greeting;
+    function setResponder(address _target) external {
+        require(_target.isContract(), "invalid target address");
+        callTarget = Responder(payable(_target));
     }
 }
