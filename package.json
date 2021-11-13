@@ -56,5 +56,8 @@
       "postinstall-postinstall": false,
       "@lavamoat/preinstall-always-fail": false
     }
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.3"
   }
 }
