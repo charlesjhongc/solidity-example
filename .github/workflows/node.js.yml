@@ -31,3 +31,5 @@ jobs:
         run: |
           yarn run compile-sol
           yarn run compile-ts
+      - name: Test
+        run: yarn run test
