@@ -30,4 +30,10 @@ describe("Test NameRegistry contract", () => {
             await nameRegContract.register("Jack")
         })
     })
+
+    describe("setResponder()", () => {
+        it("Set responder", async () => {
+            await nameRegContract.setResponder(responderContract.address)
+        })
+    })
 })
