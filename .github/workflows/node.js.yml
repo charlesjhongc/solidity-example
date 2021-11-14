@@ -32,4 +32,6 @@ jobs:
           yarn run compile-sol
           yarn run compile-ts
       - name: Test
+        env:
+          ALCHEMY_ETHEREUM_MAINNET_TOKEN: ${{ secrets.ALCHEMY_ETHEREUM_MAINNET_TOKEN }}
         run: yarn run test
