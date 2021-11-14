@@ -2,23 +2,23 @@ import { Signer } from "ethers"
 import { ethers } from "hardhat"
 
 describe("Test NameRegistry contract", () => {
-    let operator: Signer
+    let owner: Signer
     let nameRegContract
     let responderContract
 
     before(async () => {
-        ;[operator] = await ethers.getSigners()
+        ;[owner] = await ethers.getSigners()
 
         // Deploy Responder contract
-        responderContract = await (await ethers.getContractFactory("Responder", operator)).deploy()
+        responderContract = await (await ethers.getContractFactory("Responder", owner)).deploy()
 
         // Deploy NameRegistry contract
-        nameRegContract = await (await ethers.getContractFactory("NameRegistry", operator)).deploy()
+        nameRegContract = await (await ethers.getContractFactory("NameRegistry", owner)).deploy()
     })
 
     describe("Fallback/Receive", () => {
         it("receive()", async () => {
-            await operator.sendTransaction({
+            await owner.sendTransaction({
                 to: nameRegContract.address,
                 value: ethers.utils.parseUnits("10"),
             })
@@ -27,7 +27,7 @@ describe("Test NameRegistry contract", () => {
 
     describe("register()", () => {
         it("Register name", async () => {
-            await nameRegContract.register("Jack")
+            await nameRegContract.connect(owner).register("Jack")
         })
     })
 
