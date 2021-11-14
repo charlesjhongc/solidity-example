@@ -11,7 +11,7 @@ import "./interfaces/INameRegistry.sol";
 contract NameRegistry is INameRegistry, Version {
     using Address for address;
 
-    mapping(address => string) private nameMap;
+    mapping(address => string) public nameMap;
     uint256 private recordCount;
     Responder private callTarget;
 
