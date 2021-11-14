@@ -5,15 +5,15 @@ pragma solidity 0.8.10;
 
 import "@openzeppelin/contracts/utils/Address.sol";
 import "./Version.sol";
-import "./Responder.sol";
 import "./interfaces/INameRegistry.sol";
+import "./interfaces/IResponder.sol";
 
 contract NameRegistry is INameRegistry, Version {
     using Address for address;
 
     mapping(address => string) public nameMap;
     uint256 private recordCount;
-    Responder private callTarget;
+    IResponder private callTarget;
 
     constructor() Version("v1.0.0") {
         recordCount = 0;
@@ -30,6 +30,6 @@ contract NameRegistry is INameRegistry, Version {
 
     function setResponder(address _target) external {
         require(_target.isContract(), "invalid target address");
-        callTarget = Responder(payable(_target));
+        callTarget = IResponder(payable(_target));
     }
 }
