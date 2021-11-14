@@ -8,7 +8,7 @@ const accounts = {
     mnemonic: process.env.MNEMONIC || "test test test test test test test test test test test junk",
 }
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
-const ALCHEMY_TOKEN = process.env.ALCHEMY_TOKEN || ""
+const ALCHEMY_ETHEREUM_MAINNET_TOKEN = process.env.ALCHEMY_ETHEREUM_MAINNET_TOKEN || ""
 
 module.exports = {
     networks: {
@@ -16,7 +16,7 @@ module.exports = {
             chainId: 1,
             accounts,
             forking: {
-                url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_TOKEN}`,
+                url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_ETHEREUM_MAINNET_TOKEN}`,
                 blockNumber: 12650600,
             },
         },
