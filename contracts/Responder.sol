@@ -1,18 +1,20 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity 0.8.10;
 
-contract Responder {
+import "./interfaces/IResponder.sol";
+
+contract Responder is IResponder {
     constructor() {}
 
     receive() external payable {}
 
     fallback() external payable {}
 
-    function callSuccess() public pure returns (string memory) {
+    function callSuccess() external pure returns (string memory) {
         return "call success";
     }
 
-    function callRevert() public pure {
+    function callRevert() external pure {
         revert("Doomed to revert");
     }
 }
