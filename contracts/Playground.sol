@@ -2,7 +2,7 @@
 pragma solidity 0.8.10;
 
 contract Playground {
-    uint256 a;
+    uint256 public a;
 
     constructor() {
         a = 10;
