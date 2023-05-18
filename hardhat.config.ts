@@ -22,7 +22,7 @@ module.exports = {
         },
         mainnet: {
             chainId: 1,
-            url: "",
+            url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_ETHEREUM_MAINNET_TOKEN}`,
             accounts,
         },
         goerli: {
