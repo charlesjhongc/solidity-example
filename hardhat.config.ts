@@ -4,35 +4,22 @@ import "@nomiclabs/hardhat-waffle"
 // This adds support for typescript paths mappings
 import "tsconfig-paths/register"
 
-const accounts = {
-    mnemonic: process.env.MNEMONIC || "test test test test test test test test test test test junk",
-}
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
-const ALCHEMY_ETHEREUM_MAINNET_TOKEN = process.env.ALCHEMY_ETHEREUM_MAINNET_TOKEN || ""
+const ALCHEMY_TOKEN = process.env.ALCHEMY_TOKEN || ""
 
 module.exports = {
     networks: {
         hardhat: {
-            chainId: 1,
-            accounts,
             forking: {
-                url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_ETHEREUM_MAINNET_TOKEN}`,
-                blockNumber: 12650600,
+                url: `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_TOKEN}`,
+                blockNumber: 17287570,
             },
         },
         mainnet: {
-            chainId: 1,
-            url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_ETHEREUM_MAINNET_TOKEN}`,
-            accounts,
+            url: `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_TOKEN}`,
         },
         goerli: {
-            chainId: 5,
-            url: "",
-            accounts,
+            url: `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_TOKEN}`,
         },
-    },
-    etherscan: {
-        apiKey: ETHERSCAN_API_KEY,
     },
     solidity: {
         compilers: [
@@ -46,8 +33,5 @@ module.exports = {
                 },
             },
         ],
-    },
-    mocha: {
-        timeout: 600000,
     },
 }
