@@ -1,5 +1,5 @@
 import { ethers } from "hardhat"
-import { logger } from "~/scripts/logger"
+import { logger } from "~/scripts/utils"
 
 const eventABI = [
     "event Upgrade(address indexed implementation)",
