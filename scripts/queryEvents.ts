@@ -22,20 +22,6 @@ async function main() {
     }
 }
 
-async function refFilterEventByArgs() {
-    const contract = new ethers.Contract(contractAddr, eventABI, ethers.provider)
-    const filter = contract.filters.SetPermission()
-    const events = await contract.queryFilter(filter, 11463007, "latest")
-    for (var event of events) {
-        if (
-            event.args!.storageId ==
-            "0x808188d002c47900fbb4e871d29754afff429009f6684806712612d807395dd8"
-        ) {
-            logger.info(event)
-        }
-    }
-}
-
 main()
     .then(() => process.exit(0))
     .catch((error) => {
