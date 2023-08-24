@@ -21,6 +21,7 @@ async function main() {
         // or get the tx data and decode it
         const tx = await ethers.provider.getTransaction(event.transactionHash)
         const calldata = contract.interface.decodeFunctionData("toRFQ", tx.data)
+        logger.info(calldata)
     }
 }
 
@@ -33,6 +34,7 @@ async function getContractUsingName() {
     return contract
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function getContractUsingABI() {
     const eventABI = [
         // ERC20
