@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.10;
+pragma solidity 0.8.21;
 
-import "@openzeppelin/contracts/utils/Address.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "./Version.sol";
-import "./interfaces/INameRegistry.sol";
-import "./interfaces/IResponder.sol";
+import { Address } from "@openzeppelin/contracts/utils/Address.sol";
+import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+import { Version } from "./Version.sol";
+import { INameRegistry } from "./interfaces/INameRegistry.sol";
+import { IResponder } from "./interfaces/IResponder.sol";
 
 contract NameRegistry is INameRegistry, Version, Ownable {
     using Address for address;
 
-    mapping(address => string) public nameMap;
+    mapping(address userAddr => string userName) public nameMap;
     uint256 private recordCount;
     IResponder private callTarget;
 
@@ -28,7 +28,7 @@ contract NameRegistry is INameRegistry, Version, Ownable {
     }
 
     function setResponder(address _target) external {
-        require(_target.isContract(), "invalid target address");
+        if (!_target.isContract()) revert InvalidTarget();
         callTarget = IResponder(payable(_target));
     }
 }
