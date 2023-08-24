@@ -1,7 +1,20 @@
 //SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.10;
+pragma solidity ^0.8.0;
 
 interface ITarget {
+    struct Order {
+        address takerAddr;
+        address makerAddr;
+        address takerAssetAddr;
+        address makerAssetAddr;
+        uint256 takerAssetAmount;
+        uint256 makerAssetAmount;
+        address receiverAddr;
+        uint256 salt;
+        uint256 deadline;
+        uint256 feeFactor;
+    }
+
     event Upgrade(address indexed implementation);
 
     event FillOrder(
@@ -19,24 +32,7 @@ interface ITarget {
         uint16 feeFactor
     );
 
-    struct Order {
-        address takerAddr;
-        address makerAddr;
-        address takerAssetAddr;
-        address makerAssetAddr;
-        uint256 takerAssetAmount;
-        uint256 makerAssetAmount;
-        address receiverAddr;
-        uint256 salt;
-        uint256 deadline;
-        uint256 feeFactor;
-    }
-
-    function fill(
-        Order memory _order,
-        bytes memory _mmSignature,
-        bytes memory _userSignature
-    ) external payable returns (uint256);
+    function fill(Order memory _order, bytes memory _mmSignature, bytes memory _userSignature) external payable returns (uint256);
 
     function toRFQ(bytes calldata _payload) external;
 }

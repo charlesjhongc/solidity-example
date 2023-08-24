@@ -4,6 +4,7 @@
     "semi": false,
     "singleQuote": false,
     "trailingComma": "all",
+    "bracketSpacing": true,
     "overrides": [
         {
             "files": ["*.json", "*.yaml", "*.yml"],

@@ -1,10 +1,15 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.10;
+pragma solidity 0.8.21;
 
-import "./interfaces/IResponder.sol";
+import { IResponder } from "./interfaces/IResponder.sol";
 
 contract Responder is IResponder {
-    constructor() {}
+    error DoomedRevert();
+
+    constructor() {
+        // avoid empty block
+        msg.sender;
+    }
 
     receive() external payable {}
 
@@ -15,6 +20,6 @@ contract Responder is IResponder {
     }
 
     function callRevert() external pure {
-        revert("Doomed to revert");
+        revert DoomedRevert();
     }
 }
