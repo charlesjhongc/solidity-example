@@ -10,6 +10,7 @@
     "yarn": "^1.22.22"
   },
   "scripts": {
+    "setup": "yarn install --frozen-lockfile",
     "compile-sol": "forge build --force",
     "compile-ts": "tsc --noEmit",
     "check-pretty": "prettier --check .",
