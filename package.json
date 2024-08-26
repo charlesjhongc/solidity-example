@@ -10,6 +10,7 @@
     "yarn": "^1.22.22"
   },
   "scripts": {
+    "setup": "yarn install --frozen-lockfile",
     "compile-sol": "forge build --force",
     "compile-ts": "tsc --noEmit",
     "check-pretty": "prettier --check .",
@@ -18,7 +19,6 @@
     "test": "forge test"
   },
   "devDependencies": {
-    "@lavamoat/allow-scripts": "^1.0.6",
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@types/chai": "^4.2.21",
