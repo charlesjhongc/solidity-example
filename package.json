@@ -6,18 +6,16 @@
   "author": "Charles Jhong <charlesjhongc@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=16 <17",
-    "yarn": "^1.22.10"
+    "node": ">=20 <21",
+    "yarn": "^1.22.22"
   },
   "scripts": {
-    "setup": "yarn install --frozen-lockfile && yarn allow-scripts",
-    "node": "hardhat node",
-    "compile-sol": "hardhat compile --show-stack-traces --force",
+    "compile-sol": "forge build --force",
     "compile-ts": "tsc --noEmit",
     "check-pretty": "prettier --check .",
     "lint-es": "eslint --ignore-path .prettierignore \"./**/*.ts\"",
     "lint-sol": "solhint \"contracts/**/*.sol\"",
-    "test": "hardhat --network hardhat test"
+    "test": "forge test"
   },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^1.0.6",
@@ -45,21 +43,5 @@
     "ts-node": "^10.2.1",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.4.2"
-  },
-  "lavamoat": {
-    "allowScripts": {
-      "keccak": false,
-      "secp256k1": false,
-      "web3": false,
-      "bufferutil": false,
-      "utf-8-validate": false,
-      "core-js-pure": false,
-      "core-js": false,
-      "postinstall-postinstall": false,
-      "@lavamoat/preinstall-always-fail": false
-    }
-  },
-  "dependencies": {
-    "@openzeppelin/contracts": "^4.3.3"
   }
 }
