@@ -1,0 +1,9 @@
+[profile.default]
+src = 'contracts'
+evm_version = "shanghai"
+solc_version = "0.8.21"
+optimizer = true # enable or disable the solc optimizer
+optimizer_runs = 1000 # the number of optimizer runs
+verbosity = 3 # The verbosity of tests
+isolate = true # enable or disable the isolate mode for calculating gas usage correctly
+libs = ["node_modules", "lib"]
