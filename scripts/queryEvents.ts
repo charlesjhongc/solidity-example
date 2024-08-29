@@ -17,6 +17,10 @@ async function main() {
 
         // example of using args
         // logger.info(event.args!.from)
+        //
+        // get block and timestamp
+        // const blk = await event.getBlock()
+        // const ts = blk.timestamp
 
         // or get the tx data and decode it
         const tx = await ethers.provider.getTransaction(event.transactionHash)
