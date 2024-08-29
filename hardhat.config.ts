@@ -1,5 +1,6 @@
 import "dotenv/config"
 import "@nomiclabs/hardhat-waffle"
+import "@nomicfoundation/hardhat-foundry"
 
 // This adds support for typescript paths mappings
 import "tsconfig-paths/register"
@@ -23,6 +24,12 @@ module.exports = {
         },
     },
     solidity: {
+        settings: {
+            remappings: [
+                "@openzeppelin/=lib/openzeppelin-contracts/",
+                "@forge-std/=lib/forge-std/src/",
+            ],
+        },
         compilers: [
             {
                 version: "0.8.21",
