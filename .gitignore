@@ -5,3 +5,6 @@ node_modules/
 out/
 cache/
 
+# Hardhat
+artifacts/
+cache_hardhat/
