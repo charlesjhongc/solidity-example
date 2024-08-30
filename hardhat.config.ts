@@ -5,22 +5,24 @@ import "@nomicfoundation/hardhat-foundry"
 // This adds support for typescript paths mappings
 import "tsconfig-paths/register"
 
-const ALCHEMY_ETHEREUM_MAINNET_TOKEN = process.env.ALCHEMY_ETHEREUM_MAINNET_TOKEN || ""
-const ALCHEMY_ETHEREUM_GOERLI_TOKEN = process.env.ALCHEMY_ETHEREUM_GOERLI_TOKEN || ""
+const ALCHEMY_TOKEN = process.env.ALCHEMY_TOKEN || ""
 
 module.exports = {
     networks: {
         hardhat: {
             forking: {
-                url: `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_ETHEREUM_MAINNET_TOKEN}`,
+                chainId: 1,
+                url: `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_TOKEN}`,
                 blockNumber: 17287570,
             },
         },
         mainnet: {
-            url: `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_ETHEREUM_MAINNET_TOKEN}`,
+            chainId: 1,
+            url: `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_TOKEN}`,
         },
-        goerli: {
-            url: `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_ETHEREUM_GOERLI_TOKEN}`,
+        sepolia: {
+            chainId: 11155111,
+            url: `https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_TOKEN}`,
         },
     },
     solidity: {
